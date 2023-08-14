@@ -1,0 +1,172 @@
+/* ### Spacing System (px)
+> 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+ */
+
+/* Component Layout */
+.section-hero {
+  padding: 128px 30px 0;
+  background-color: #192028;
+}
+
+.section-hero-container {
+  max-width: 1140px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+}
+
+.hero-text-box {
+  flex: 0 1 56%;
+  margin-right: -8%;
+  padding-top: 1.6rem;
+  align-self: flex-start;
+  container: hero-text / inline-size;
+
+  /* ensure text renders on top of image */
+  position: relative;
+  z-index: 1000;
+}
+
+@media only screen and (max-width: 1200px) {
+  .hero-text-box {
+    padding-top: 0;
+  }
+}
+
+/* take full width - single column mode */
+@media only screen and (max-width: 820px) {
+  .hero-text-box {
+    flex: 1;
+    margin-right: 0;
+    margin-bottom: 96px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+  }
+}
+
+.sub-heading {
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 32px;
+
+  color: #ffd500;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 5px;
+
+  /* transition: all 0.4s; */
+
+  animation-name: fadeInUp;
+  animation-duration: 1.25s;
+  position: relative;
+}
+.heading-primary {
+  margin-bottom: 48px;
+
+  color: #fff;
+  /*  // font-size: 10rem; vw is in percentage */
+  font-size: clamp(5.3rem, calc(-4.1rem + 11.75vw), 10rem);
+  /* // font-size: clamp(1vw, 1rem, 10rem); */
+  font-weight: 900;
+  line-height: 1;
+
+  /* // transition: all 0.4s; */
+
+  animation-name: fadeInUp;
+  animation-duration: 1.25s;
+  animation-delay: 400ms;
+
+  /* // word-break: break-all; */
+
+  position: relative;
+}
+.hero-description {
+  margin-bottom: 64px;
+  color: #fff;
+  /* // font-size: 23px; */
+  font-size: clamp(2rem, 3.19cqw + 0.64rem, 2.3rem);
+  font-weight: 300;
+  line-height: 34.5px;
+  width: 71%;
+
+  animation-name: fadeInUp;
+  animation-duration: 1.25s;
+  animation-delay: 600ms;
+}
+
+/* // adjust hero text width to facilitate vertical spacing */
+@container hero-text (max-width: 543px) {
+  .hero-description {
+    width: 90%;
+    margin-bottom: 32px;
+  }
+}
+
+@media only screen and (max-width: 456px) {
+  .heading-primary {
+    font-size: 4.4rem;
+    line-height: 1.1;
+  }
+}
+
+.btn:link,
+.btn:visited {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 48px;
+}
+
+.btn--full {
+  background-color: #ffd500;
+  color: #222;
+}
+
+/*******************************/
+/* HERO IMAGE COMPONENT */
+/*******************************/
+.hero-img-box {
+  flex: 0 1 52%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-img-box::after {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(rgba(34, 34, 34, 0.3), rgba(34, 34, 34, 0.3));
+}
+
+.hero-img {
+  width: 100%;
+  display: block;
+}
+
+@media only screen and (max-width: 820px) {
+  .hero-img-box {
+    display: none;
+  }
+}
+
+/*******************************/
+/* ANIMATIONS */
+/*******************************/
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
